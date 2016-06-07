@@ -221,11 +221,9 @@ static void radio_hci_smd_deregister(void)
 	if (hsmd == NULL)
 		goto done;
 
-	if (hs.hdev != NULL) {
-		radio_hci_unregister_dev(hs.hdev);
-		kfree(hs.hdev);
-		hs.hdev = NULL;
-	}
+	radio_hci_unregister_dev(hs.hdev);
+	kfree(hs.hdev);
+	hs.hdev = NULL;
 
 	smd_close(hs.fm_channel);
 	hs.fm_channel = 0;
