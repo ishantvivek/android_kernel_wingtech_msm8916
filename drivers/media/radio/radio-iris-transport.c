@@ -49,11 +49,7 @@ static void radio_hci_smd_exit(void);
 
 static void radio_hci_smd_destruct(struct radio_hci_dev *hdev)
 {
-	if (hs.hdev != NULL) {
-		radio_hci_unregister_dev(hs.hdev);
-		kfree(hs.hdev);
-		hs.hdev = NULL;
-	}
+	radio_hci_unregister_dev(hs.hdev);
 }
 
 
