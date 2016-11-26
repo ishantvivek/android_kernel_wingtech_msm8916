@@ -1359,7 +1359,7 @@ static const struct snd_kcontrol_new msm_snd_controls[] = {
 	SOC_ENUM_EXT("MI2S_RX SampleRate", msm_snd_enum[3],
 			mi2s_rx_sample_rate_get, mi2s_rx_sample_rate_put),
 #ifdef CONFIG_MACH_WT88047
-	SOC_ENUM_EXT("Lineout_1 amp", msm_snd_enum[4],
+	SOC_ENUM_EXT("Lineout_1 amp", msm_snd_enum[5],
 			lineout_status_get, lineout_status_put),
 #endif
 };
