@@ -39,7 +39,7 @@ struct radio_data {
 };
 struct radio_data hs;
 DEFINE_MUTEX(fm_smd_enable);
-static int fmsmd_set = 0;
+static int fmsmd_set;
 static bool chan_opened;
 static int hcismd_fm_set_enable(const char *val, struct kernel_param *kp);
 module_param_call(fmsmd_set, hcismd_fm_set_enable, NULL, &fmsmd_set, 0644);
@@ -207,18 +207,12 @@ static int radio_hci_smd_register_dev(struct radio_data *hsmd)
 
 static void radio_hci_smd_deregister(void)
 {
-	struct radio_data *hsmd = &hs;
-
-	if (hsmd == NULL)
-		goto done;
-
 	radio_hci_unregister_dev(hs.hdev);
 	kfree(hs.hdev);
 	hs.hdev = NULL;
 
 	smd_close(hs.fm_channel);
 	hs.fm_channel = 0;
-done:
 	fmsmd_set = 0;
 }
 
